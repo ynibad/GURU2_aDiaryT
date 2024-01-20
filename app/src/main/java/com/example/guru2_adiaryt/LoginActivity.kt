@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
 
         dbHelper = DBHelper(this)
 
+        // 로그인 버튼 클릭 이벤트
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
@@ -42,10 +43,10 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 // 로그인 실패
                 Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
-                // 여기에 로그인 실패 시 수행할 동작을 추가하세요.
             }
         }
 
+        // 회원가입 버튼 클릭 이벤트
         signUpButton.setOnClickListener {
             // 회원가입 화면으로 이동
             val intent = Intent(this, SignUpActivity::class.java)

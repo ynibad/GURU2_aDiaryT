@@ -44,6 +44,7 @@ class SignUpActivity : AppCompatActivity() {
 
         dbHelper = DBHelper(this)
 
+        // 회원가입 버튼 클릭 이벤트
         signUpButton.setOnClickListener {
             val username = usernameEditText.text.toString()
             val email = emailEditText.text.toString()
@@ -57,13 +58,13 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "주거 지역을 선택하세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             // DBHelper를 사용하여 회원 정보 저장
             val userId = dbHelper.insertUser(username, email, password)
 
             if (userId != -1L) {
                 // 회원가입 성공
                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
-                // 여기에 회원가입 성공 시 수행할 동작을 추가하세요.
 
                 // 회원가입 완료 후 로그인 화면으로 이동
                 val intent = Intent(this, LoginActivity::class.java)
@@ -71,12 +72,12 @@ class SignUpActivity : AppCompatActivity() {
             } else {
                 // 회원가입 실패
                 Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
-                // 여기에 회원가입 실패 시 수행할 동작을 추가하세요.
             }
         }
 
+        // 로그인 화면으로 돌아가기
         backToLoginButton.setOnClickListener {
-            // 회원가입 화면으로 이동
+            // 로그인 화면으로 이동
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
