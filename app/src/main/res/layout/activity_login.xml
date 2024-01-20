@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- 이메일 입력 부분 -->
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        android:layout_below="@id/appLogo"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:background="#F5F5F5"/> <!-- 연한 회색 배경색 추가 -->
+
+    <!-- 비밀번호 입력 부분 -->
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:layout_below="@id/emailEditText"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:background="#F5F5F5"/> <!-- 연한 회색 배경색 추가 -->
+
+    <!-- 로그인 및 회원가입 버튼 부분 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordEditText"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:textColor="#ffffff"
+            android:backgroundTint="#0000cc"
+            android:layout_marginEnd="4dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="#0000cc"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signUpButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ffffff"
+            android:text="회원가입"
+            android:textColor="#0000cc"
+            android:layout_marginStart="4dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="#0000cc"/>
+    </LinearLayout>
+
+</RelativeLayout>
