@@ -9,6 +9,7 @@
     android:background="#ffffff">
 
     <ImageView
+        android:src="@drawable/profileimg"
         android:id="@+id/appLogoSignUp"
         android:layout_width="120dp"
         android:layout_height="120dp"

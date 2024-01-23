@@ -7,6 +7,7 @@
     android:background="#ffffff">
 
     <ImageView
+        android:src="@drawable/profileimg"
         android:id="@+id/appLogo"
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -25,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:padding="12dp"
         android:textColor="#000000"
-        android:background="#F5F5F5"/> <!-- 연한 회색 배경색 추가 -->
+        android:background="#F5F5F5"/>
 
     <!-- 비밀번호 입력 부분 -->
     <EditText
@@ -38,7 +39,7 @@
         android:layout_marginTop="16dp"
         android:padding="12dp"
         android:textColor="#000000"
-        android:background="#F5F5F5"/> <!-- 연한 회색 배경색 추가 -->
+        android:background="#F5F5F5"/>
 
     <!-- 로그인 및 회원가입 버튼 부분 -->
     <LinearLayout
