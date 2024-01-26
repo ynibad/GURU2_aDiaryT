@@ -10,25 +10,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_adiaryt.Article
 import com.example.guru2_adiaryt.R
 
+// 첫 번째 탭의 프래그먼트를 위한 클래스
 class FirstFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var articleAdapter: ArticleAdapter
     private lateinit var articlesList: List<Article>
 
+    // 뷰가 생성될 때 호출
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
+    // 뷰가 완전히 생성된 후 호출
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        articlesList = getArticlesForTab()
-        articleAdapter = ArticleAdapter(articlesList)
+        articlesList = getArticlesForTab() // 탭에 표시할 글들을 가져오기
+        articleAdapter = ArticleAdapter(articlesList) // 어댑터에 글 목록 설정
         recyclerView.adapter = articleAdapter
     }
 
+    // 탭에 표시할 글 목록을 가져오는 함수
     private fun getArticlesForTab(): List<Article> {
         return listOf(Article("Title 1", "Content 1"), Article("Title 2", "Content 2"))
     }
