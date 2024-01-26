@@ -1,44 +1,35 @@
 package com.example.guru2_adiaryt
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.guru2_adiaryt.databinding.FragmentFirstBinding
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.guru2_adiaryt.Article
+import com.example.guru2_adiaryt.R
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var articleAdapter: ArticleAdapter
+    private lateinit var articlesList: List<Article>
 
-    private var _binding: FragmentFirstBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        return binding.root
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        articlesList = getArticlesForTab()
+        articleAdapter = ArticleAdapter(articlesList)
+        recyclerView.adapter = articleAdapter
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun getArticlesForTab(): List<Article> {
+        return listOf(Article("Title 1", "Content 1"), Article("Title 2", "Content 2"))
     }
 }

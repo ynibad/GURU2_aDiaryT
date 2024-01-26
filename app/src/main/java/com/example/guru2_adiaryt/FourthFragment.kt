@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_adiaryt.R
 
-class SecondFragment : Fragment() {
+class FourthFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var articleAdapter: ArticleAdapter
     private lateinit var articlesList: List<Article>

@@ -1,58 +1,67 @@
 package com.example.guru2_adiaryt
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import com.example.guru2_adiaryt.databinding.ActivityMainBinding
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.guru2_adiaryt.R
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
+    private lateinit var adapter: ViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        viewPager = findViewById(R.id.view_pager)
+        tabLayout = findViewById(R.id.tab_layout)
 
-        setSupportActionBar(binding.toolbar)
+        adapter = ViewPagerAdapter(this) // Assuming you have 5 tabs
+        viewPager.adapter = adapter
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "배달비 \n게시판"
+                1 -> "심부름 \n게시판"
+                2 -> "맛집 \n 게시판"
+                3 -> "저축 팁 \n게시판"
+                4 -> "레시피 \n게시판"
+                else -> null
+            }
+        }.attach()
+    }
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+    class ViewPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+        override fun getItemCount(): Int = 5
+
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                0 -> FirstFragment()
+                1 -> SecondFragment()
+                2 -> ThirdFragment()
+                3 -> FourthFragment()
+                4 -> FifthFragment()
+                else -> throw IllegalArgumentException("Invalid position $position")
+            }
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+    class DummyFragment : Fragment() {
+        companion object {
+            fun newInstance(position: Int): DummyFragment {
+                val fragment = DummyFragment()
+                val args = Bundle()
+                args.putInt("position", position)
+                fragment.arguments = args
+                return fragment
+            }
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
     }
 }
