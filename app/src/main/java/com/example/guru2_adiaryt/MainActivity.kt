@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var adapter: ViewPagerAdapter
 
+    // 액티비티가 생성될 때 호출
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,9 +24,10 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.view_pager)
         tabLayout = findViewById(R.id.tab_layout)
 
-        adapter = ViewPagerAdapter(this) // Assuming you have 5 tabs
-        viewPager.adapter = adapter
+        adapter = ViewPagerAdapter(this)
+        viewPager.adapter = adapter // ViewPager에 어댑터 설정
 
+        // TabLayout과 ViewPager2를 연동
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "배달비 \n게시판"
@@ -38,9 +40,11 @@ class MainActivity : AppCompatActivity() {
         }.attach()
     }
 
+    // ViewPager2에 사용될 어댑터 클래스
     class ViewPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
         override fun getItemCount(): Int = 5
 
+        // 각 탭에 해당하는 프래그먼트를 생성
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> FirstFragment()
@@ -53,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // 예시를 위한 임시 프래그먼트
     class DummyFragment : Fragment() {
         companion object {
             fun newInstance(position: Int): DummyFragment {
