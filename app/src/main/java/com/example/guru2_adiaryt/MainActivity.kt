@@ -1,5 +1,7 @@
 package com.example.guru2_adiaryt
 
+import android.view.View
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -38,6 +40,13 @@ class MainActivity : AppCompatActivity() {
                 else -> null
             }
         }.attach()
+    }
+
+    // 마이페이지 화면 전환
+    fun onMyPageIconClick(view: View) {
+        // 마이페이지 액티비티로 이동하는 인텐트 생성
+        val intent = Intent(this, MyPageActivity::class.java)
+        startActivity(intent)
     }
 
     // ViewPager2에 사용될 어댑터 클래스
