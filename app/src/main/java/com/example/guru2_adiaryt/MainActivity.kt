@@ -1,9 +1,12 @@
 package com.example.guru2_adiaryt
 
+import android.content.Context
 import android.view.View
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -11,12 +14,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.guru2_adiaryt.R
+import com.example.guru2_adiaryt.board.BoardWriteActivity
+import com.example.guru2_adiaryt.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
     private lateinit var adapter: ViewPagerAdapter
+    private lateinit var  binding: ActivityMainBinding
+
 
     // 액티비티가 생성될 때 호출
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +32,15 @@ class MainActivity : AppCompatActivity() {
 
         viewPager = findViewById(R.id.view_pager)
         tabLayout = findViewById(R.id.tab_layout)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        // writingIcon의 클릭 이벤트 설정
+        binding.writingIcon.setOnClickListener {
+            val intent = Intent(this, BoardWriteActivity::class.java)
+            startActivity(intent)
+        }
+
 
         adapter = ViewPagerAdapter(this)
         viewPager.adapter = adapter // ViewPager에 어댑터 설정
@@ -81,3 +97,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+

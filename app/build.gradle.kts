@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.guru2_adiaryt"
+    // namespace = "com.example.guru2_adiaryt"
     compileSdk = 34
 
     defaultConfig {
@@ -33,7 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
+        dataBinding = true
         viewBinding = true
     }
 }
