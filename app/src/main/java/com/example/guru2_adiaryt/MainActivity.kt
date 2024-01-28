@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         adapter = ViewPagerAdapter(this)
         viewPager.adapter = adapter // ViewPager에 어댑터 설정
 
+
+
         // TabLayout과 ViewPager2를 연동
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
