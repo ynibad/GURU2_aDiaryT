@@ -1,9 +1,11 @@
 package com.example.guru2_adiaryt
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guru2_adiaryt.R
 
@@ -25,6 +27,12 @@ class ArticleAdapter(private val articles: List<Article>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = articles[position]
         holder.titleTextView.text = article.title
+
+        // 각 Article 클릭 시 상세 페이지로 전환
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            ContextCompat.startActivity(holder.itemView.context, intent, null)
+        }
     }
 
     // 전체 아이템의 수를 반환
