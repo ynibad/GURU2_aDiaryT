@@ -33,6 +33,8 @@ class SecondFragment : Fragment() {
 
     // 탭에 표시할 글 목록을 가져오는 함수
     private fun getArticlesForTab(): List<Article> {
-        return listOf(Article("Title 1", "Content 1"), Article("Title 2", "Content 2"))
+        return listOf(Article("Title 1", "Content 1"), Article("Title 2", "Content 2"),Article("Title 3", "Content 3"),
+            Article("Title 4", "Content 4"),Article("Title 5", "Content 5"),
+            Article("Title 6", "Content 6"),Article("Title 7", "Content 7"))
     }
 }

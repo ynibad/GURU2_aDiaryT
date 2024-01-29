@@ -34,6 +34,9 @@ class FirstFragment : Fragment() {
 
     // 탭에 표시할 글 목록을 가져오는 함수
     private fun getArticlesForTab(): List<Article> {
-        return listOf(Article("Title 1", "Content 1"), Article("Title 2", "Content 2"))
+        return listOf(Article("신전떡볶이 공릉점 같이 시키실 분 구합니다.", "신전떡볶이 먹고 싶은데 19:00까지 같이 시켜 먹을 사람 구해용.\n" +
+                "저 공릉1동 사는데 공릉역 1번출구 앞에서 같이 받아요~!"), Article("Title 2", "Content 2"),
+            Article("Title 3", "Content 3"), Article("Title 4", "Content 4"),Article("Title 5", "Content 5"),
+            Article("Title 6", "Content 6"), Article("Title 7", "Content 7"))
     }
 }
