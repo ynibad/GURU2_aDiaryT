@@ -7,10 +7,10 @@
     android:background="#ffffff">
 
     <ImageView
-        android:src="@drawable/profileimg"
+        android:src="@drawable/logo"
         android:id="@+id/appLogo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="140dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="32dp"/>
