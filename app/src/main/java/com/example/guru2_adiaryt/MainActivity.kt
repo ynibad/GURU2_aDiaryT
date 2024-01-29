@@ -28,12 +28,12 @@ class MainActivity : AppCompatActivity() {
     // 액티비티가 생성될 때 호출
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         viewPager = findViewById(R.id.view_pager)
         tabLayout = findViewById(R.id.tab_layout)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // writingIcon의 클릭 이벤트 설정
         binding.writingIcon.setOnClickListener {
