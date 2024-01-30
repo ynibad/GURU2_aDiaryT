@@ -75,18 +75,6 @@
         android:gravity="center">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/signUpButtonSignUp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:textColor="#ffffff"
-            android:backgroundTint="#0000cc"
-            android:layout_marginEnd="4dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="#0000cc"/>
-
-        <com.google.android.material.button.MaterialButton
             android:id="@+id/backToLoginButton"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -94,6 +82,18 @@
             android:backgroundTint="#ffffff"
             android:text="로그인 화면으로"
             android:textColor="#0000cc"
+            android:layout_marginEnd="4dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="#0000cc"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signUpButtonSignUp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:textColor="#ffffff"
+            android:backgroundTint="#0000cc"
             android:layout_marginStart="4dp"
             app:strokeWidth="2dp"
             app:strokeColor="#0000cc"/>
