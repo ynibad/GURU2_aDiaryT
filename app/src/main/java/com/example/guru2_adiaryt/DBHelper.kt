@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
+    // DB 관련 상수
     companion object {
         private const val DATABASE_NAME = "user_db"
         private const val DATABASE_VERSION = 1
@@ -18,6 +19,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_PASSWORD = "password"
     }
 
+    // DB 생성
     override fun onCreate(db: SQLiteDatabase?) {
         val createTableQuery = "CREATE TABLE $TABLE_NAME " +
                 "($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -28,11 +30,13 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db?.execSQL(createTableQuery)
     }
 
+    // DB 업그레이드
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
         onCreate(db)
     }
 
+    // 사용자 정보 추가 메서드
     fun insertUser(username: String, email: String, password: String): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
@@ -45,6 +49,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return id
     }
 
+    // 로그인 메서드
     fun loginUser(email: String, password: String): Boolean {
         val db = readableDatabase
         val projection = arrayOf(COLUMN_ID, COLUMN_USERNAME, COLUMN_EMAIL, COLUMN_PASSWORD)
