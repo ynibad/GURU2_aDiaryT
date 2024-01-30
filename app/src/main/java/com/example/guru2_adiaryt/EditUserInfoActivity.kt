@@ -18,11 +18,10 @@ class EditUserInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_userinfo)
 
         dbHelper = DBHelper(this)
+        sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
 
         val saveButton: Button = findViewById(R.id.saveButton)
         val cancelButton: Button = findViewById(R.id.cancleButton)
-
-        sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
 
         cancelButton.setOnClickListener {
             finish() // 현재 액티비티 종료
