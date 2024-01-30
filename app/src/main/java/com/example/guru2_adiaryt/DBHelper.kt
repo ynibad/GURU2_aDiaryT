@@ -1,5 +1,6 @@
 package com.example.guru2_adiaryt
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -61,4 +62,40 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return loginSuccess
     }
+
+    // 사용자 정보 가져오기
+    @SuppressLint("Range")
+    fun getUserInfo(email: String): User? {
+        val db = readableDatabase
+        val selection = "$COLUMN_EMAIL = ?"
+        val selectionArgs = arrayOf(email)
+        val cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)
+        var user: User? = null
+        if (cursor.moveToFirst()) {
+            val id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID))
+            val username = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME))
+            val password = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD))
+            user = User(id, username, email, password)
+        }
+        cursor.close()
+        db.close()
+        return user
+    }
+
+    // 사용자 정보 수정
+    fun updateUserInfo(id: Int, newUsername: String, newPassword: String): Boolean {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_USERNAME, newUsername)
+            put(COLUMN_PASSWORD, newPassword)
+        }
+        val selection = "$COLUMN_ID = ?"
+        val selectionArgs = arrayOf(id.toString())
+        val rowsUpdated = db.update(TABLE_NAME, values, selection, selectionArgs)
+        db.close()
+        return rowsUpdated > 0
+    }
+
+    // user information
+    data class User(val id: Int, val username: String, val email: String, val password: String)
 }

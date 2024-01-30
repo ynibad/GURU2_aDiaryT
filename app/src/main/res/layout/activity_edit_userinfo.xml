@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/updateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:layout_marginTop="160dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:text="회원 정보 수정"/>
+
+    <!-- 닉네임 수정 부분 -->
+    <EditText
+        android:id="@+id/nicknameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="새로운 닉네임"
+        android:inputType="text"
+        android:layout_below="@id/updateTextView"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:background="#F5F5F5"/>
+
+    <!-- 비밀번호 수정 부분 -->
+    <EditText
+        android:id="@+id/passwordEditTextEditProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="새로운 비밀번호"
+        android:inputType="textPassword"
+        android:layout_below="@id/nicknameEditText"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:background="#F5F5F5"/>
+
+    <!-- 돌아가기 및 저장 버튼 부분 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordEditTextEditProfile"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancleButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ffffff"
+            android:text="이전 화면으로"
+            android:textColor="#0000cc"
+            android:layout_marginEnd="4dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="#0000cc"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="변경 후 저장"
+            android:textColor="#ffffff"
+            android:backgroundTint="#0000cc"
+            android:layout_marginStart="4dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="#0000cc"/>
+    </LinearLayout>
+
+</RelativeLayout>

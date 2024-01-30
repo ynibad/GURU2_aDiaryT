@@ -1,4 +1,5 @@
 package com.example.guru2_adiaryt
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -34,6 +35,11 @@ class LoginActivity : AppCompatActivity() {
             val loginResult = dbHelper.loginUser(email, password)
 
             if (loginResult) {
+                // SharedPreferences에 이메일 정보 저장
+                val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("email", email)
+                editor.apply()
                 // 로그인 성공
                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                 // MainActivity로 이동
