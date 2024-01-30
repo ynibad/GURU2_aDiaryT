@@ -13,50 +13,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GURU2_aDiaryT"
         tools:targetApi="31">
-
+        <activity
+            android:name=".board.Detail_02"
+            android:exported="false" />
         <activity
             android:name=".board.BoardWriteActivity"
             android:exported="false" />
-
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GURU2_aDiaryT" />
-
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MyPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".SignUpActivity" />
-
-        <activity android:name=".EditUserInfoActivity"/>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".EditUserInfoActivity" />
     </application>
+
 </manifest>
